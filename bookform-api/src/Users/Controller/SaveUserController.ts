@@ -7,7 +7,7 @@ import { Uuid } from "../../Shared/Models/Uuid";
 import { v4 as uuidv4 } from 'uuid';
 import { UuidOptional } from "../../Shared/Models/UuidOptional";
 import { User } from "../Model/User";
-import { UserCreateServices } from "../Services/UserCreateServices";
+import { UserCreateServices } from "../Services/CreateUserService";
 import UserRepository from "../Repository/UserRepository";
 import { USERS_REPOSITORY } from "../../Shared/Infraestructure/dependency-names";
 import { AuthService } from "../Services/AuthService";

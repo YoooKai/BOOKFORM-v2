@@ -9,7 +9,7 @@ export class DeleteUserService {
 
     async execute(id: Uuid): Promise<any> {
 
-        return await this.userRepository.activeRemoveUser(id);
+        return await this.userRepository.removeUser(id);
 
     }
 
