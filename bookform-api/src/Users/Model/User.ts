@@ -1,4 +1,4 @@
-import { Bool } from "../../Shared/Models/Bool";
+
 import { Name } from "../../Shared/Models/Name";
 import { Uuid } from "../../Shared/Models/Uuid";
 import { UserPrimitives } from "./UserPrimitives";

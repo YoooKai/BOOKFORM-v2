@@ -6,7 +6,6 @@ import { SaveUserController } from './src/Users/Controller/SaveUserController';
 import { GetUsersController } from './src/Users/Controller/GetUsersController';
 import { GetUserController } from './src/Users/Controller/GetUserController';
 import { DeleteUserController } from './src/Users/Controller/DeleteUserController';
-import { GetUserByTokenController } from './src/Users/Controller/GetUserByTokenController';
 import { GetBookController } from './src/Book/Controller/GetBookController';
 import { SaveBookController } from './src/Book/Controller/SaveBookController';
 import { DeleteBookController } from './src/Book/Controller/DeleteBookController';
@@ -26,7 +25,6 @@ httpServer.bindEndpoints({
     'POST:/create_user'      : SaveUserController,
     'POST:/get_users'        : GetUsersController,
     'GET:/get_user/:id'      : GetUserController,
-    'GET:/get_user_by_token' : GetUserByTokenController,
     'POST:/delete_user'      : DeleteUserController,
 
 

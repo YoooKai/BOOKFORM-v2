@@ -30,13 +30,12 @@ export default class LoanPrismaRepository implements LoanRepository{
             }
         });
     };
-    async getLoans(user_id: UuidOptional, book_id: UuidOptional, status: Bool): Promise<Loan[]> {
+    async getLoans(user_id: UuidOptional, book_id: UuidOptional): Promise<Loan[]> {
         const loans = await prisma.loans.findMany({
           where: {
             AND: [
               user_id.value ? { user_id: { equals: user_id.value } } : {},
               book_id.value ? { book_id: { equals: book_id.value } } : {},
-              { Users: { status: { equals: status.value } } } // Filtrar por el status del usuario
             ],
           },
           include: {

@@ -4,7 +4,6 @@ import HttpService from "../../Shared/Infraestructure/Services/HttpService";
 import { Request, Response } from "express";
 import UserRepository from "../Repository/UserRepository";
 import { USERS_REPOSITORY } from "../../Shared/Infraestructure/dependency-names";
-import { AuthService } from "../Services/AuthService";
 import { Uuid } from "../../Shared/Models/Uuid";
 import { GetUserService } from "../Services/GetUserService";
 
@@ -19,11 +18,7 @@ export class GetUserController implements HttpController {
     
     async execute(request: Request, response: Response): Promise<void> {
         try {
-
             const id = new Uuid(request.params.id);
-
-            const authRequestServices = new AuthService(this.userRepository);
-            await authRequestServices.checkAccessToken(request.get('Authorization'));
             
             const getUserService = new GetUserService(this.userRepository);  
             const user = await getUserService.execute(id);
@@ -31,8 +26,6 @@ export class GetUserController implements HttpController {
             this.httpService.ok(response, user ? user.getPrimitives() : null); 
 
         } catch (error: any) {
-
-            console.log(error.message);
             
             this.httpService.badRequest(response, 'Usuario no encontrado.');
 
