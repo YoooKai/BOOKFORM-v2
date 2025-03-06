@@ -6,9 +6,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { LOANS_REPOSITORY, USERS_REPOSITORY } from "../../Shared/Infraestructure/dependency-names";
 import UserRepository from "../../Users/Repository/UserRepository";
 import LoanRepository from "../Repository/LoanRepository";
-import { AuthService } from "../../Users/Services/AuthService";
-import { GetLoansService } from "../Services/GetLoansService";
-import { UuidOptional } from "../../Shared/Models/UuidOptional";
 import { Loan } from "../Model/Loan";
 import { Bool } from "../../Shared/Models/Bool";
 import { Uuid } from "../../Shared/Models/Uuid";
@@ -28,8 +25,8 @@ export class SaveLoanController implements HttpController {
             const id = new Uuid(request.body.id ? request.body.id : uuidv4())
             const user_id = new Uuid(request.body.user_id);
             const book_id = new Uuid(request.body.book_id);
-            const loan_date = new SecureDate(request.body.loan_date);
-            const return_date = new SecureDate(request.body.return_date);
+            const loan_date = SecureDate.fromString(request.body.loan_date);
+            const return_date = SecureDate.fromString(request.body.return_date);
 
             // const authRequestServices = new AuthService(this.userRepository);
             // await authRequestServices.checkAccessToken(request.get('Authorization'));

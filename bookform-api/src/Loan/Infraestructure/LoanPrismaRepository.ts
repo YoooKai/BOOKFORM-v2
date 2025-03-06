@@ -14,6 +14,7 @@ export default class LoanPrismaRepository implements LoanRepository{
         private logService: LogService,
     ){}
     async saveLoan(loan: Loan): Promise<void> {
+        
         await prisma.loans.upsert({
             where: {
                 id: loan.id.value

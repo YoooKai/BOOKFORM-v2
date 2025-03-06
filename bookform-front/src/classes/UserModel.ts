@@ -7,10 +7,6 @@ export class UserModel {
         return this.user.id;
     };
 
-    public get status(): boolean{
-        return this.user.status;
-    };
-
     public get email(): string{
         return this.user.email;
     };
@@ -18,16 +14,19 @@ export class UserModel {
     public get name(): string{
         return this.user.name;
     };
+    public get password(): string{
+        return this.user.password;
+    }
 
 
 
     public set id(id: string){
         this.user.id = id;
     };
-
-    public set status(status: boolean){
-        this.user.status = status;
+    public set password(password: string){
+        this.user.password = password;
     };
+    
 
     public set email(email: string){
         this.user.email = email;

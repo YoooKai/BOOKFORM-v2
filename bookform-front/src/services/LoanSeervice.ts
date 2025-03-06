@@ -4,12 +4,11 @@ import { LoanModel } from "../classes/LoanModel";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
-export async function getLoans(user_id: string | null, book_id: string | null, status: boolean): Promise<any> {
+export async function getLoans(user_id: string | null, book_id: string | null): Promise<any> {
     try{
         let query = {
             user_id: user_id ? user_id : null,
             book_id: book_id ? book_id : null,
-            status: status ? status : null
         }
         const response = await axios.post(apiUrl + "/get_loans", query, {
             headers: {

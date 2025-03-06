@@ -42,9 +42,9 @@ export async function getUserByToken(token: string): Promise<any> {
         
         return new UserModel({
             id: user.id,
-            status: user.status,
             email: user.email,
             name: user.name,
+            password: user.password
         });
 
     } catch (error: any) {
@@ -58,11 +58,10 @@ export async function getUserByToken(token: string): Promise<any> {
     }
 }
 
-export async function getUsers(status: boolean, name: string, email: string): Promise<any> {
+export async function getUsers( name: string, email: string): Promise<any> {
     try {
 
         let query = {
-            status: status ? status : false,
             name: name ? name : null,
             email: email ? email : null,
         }
@@ -75,9 +74,9 @@ export async function getUsers(status: boolean, name: string, email: string): Pr
         
         return response.data.map((user: any) => new UserModel({
             id: user.id,
-            status: user.status,
             email: user.email,
             name: user.name,
+            password: user.password
         }));
 
     } catch (error: any) {
@@ -104,9 +103,9 @@ export async function getUser(id: string): Promise<any> {
         
         return new UserModel({
             id: user.id,
-            status: user.status,
             email: user.email,
             name: user.name,
+            password: user.password
         });
 
     } catch (error: any) {
@@ -155,7 +154,6 @@ export async function updateUser(user: UserModel, password: string | null): Prom
             name : user.name,
             email : user.email,
             password : password ? password : null,
-            status : user.status,
         }
 
         const response = await axios.post(apiUrl + "/create_user", query, {
